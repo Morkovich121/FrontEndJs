@@ -1,0 +1,31 @@
+div:first-child{
+    background: repeating-linear-gradient(45deg, #7fffd4 10%, #f0ffff 30%);
+    width: 400px;
+    
+}
+
+a[href*="htmlweb"]{
+    color:purple;
+}
+
+a[href*="htmlweb"]:first-child{
+    background: radial-gradient(ellipse at bottom, #ff444f, #000000, transparent);
+}
+
+a+a:visited{
+    color:yellow
+}
+
+a:last-child::selection{
+    font-weight: bold;
+    color:#ff444f;
+    background: green;
+}
+
+a[href$="css"]:hover{
+    border: 5px solid #ff4300;
+    border-style:inset;
+    border-radius: 3px 13px 3px 13px;
+    border-top-left-radius: 100% 5px;
+    border-bottom-right-radius: 100% 5px;
+}
