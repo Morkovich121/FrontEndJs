@@ -22,7 +22,7 @@ a:last-child::selection{
     background: green;
 }
 
-a[href$="css"]:hover{
+a[href$="/css"]:hover{
     border: 5px solid #ff4300;
     border-style:inset;
     border-radius: 3px 13px 3px 13px;
