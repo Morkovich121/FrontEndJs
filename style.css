@@ -88,6 +88,10 @@ header{
     text-align: center;
 }
 
+.site-nav{
+    color:black;
+}
+
 .site-nav:visited{
     color:black;
 }
