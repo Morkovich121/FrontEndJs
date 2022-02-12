@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+}
+
+.container{
+    display: grid;
+    height: 200px;
+    grid-gap:2px;
+    grid-template-areas: 
+    "a b c"
+    "d e f"
+    "g h i"
+    "j k l";
+}
+
+.a{
+    height: 50px;
+    grid-area: a;
+    justify-self:end;
+    width: 18vw;
+}
+
+.b{
+    height: 50px;
+    grid-area: b;
+    justify-self:end;
+    width: 18vw;
+}
+
+.c{
+    height: 50px;
+    grid-area: c;
+    justify-self:end;
+    width: 18vw;
+}
+
+.d{
+    height: 50px;
+    grid-area: d;
+    justify-self:start;
+    width: 18vw;
+}
+
+.e{
+    height: 50px;
+    grid-area: e;
+    justify-self:start;
+    width: 18vw;
+}
+
+.f{
+    height: 50px;
+    grid-area: f;
+    justify-self:start;
+    width: 18vw;
+}
+
+.g{
+    height: 50px;
+    grid-area: g;
+    justify-self:center;
+    width: 18vw;
+}
+
+.h{
+    height: 50px;
+    grid-area: h;
+    justify-self:center;
+    width: 18vw;
+}
+
+.i{
+    height: 50px;
+    grid-area: i;
+    justify-self:center;
+    width: 18vw;
+}
+
+.j{
+    height: 50px;
+    grid-area: j;
+    justify-self:stretch;
+}
+
+.k{
+    height: 50px;
+    grid-area: k;
+    justify-self:stretch;
+}
+
+.l{
+    height: 50px;
+    grid-area: l;
+    justify-self:stretch;
+}
