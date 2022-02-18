@@ -101,6 +101,8 @@ let rightRotations = (string) => {
 }
 
 let doesBrickFit = (a, b, c, w, h) => {
-    return (a * b <= w * h || b * c <= w * h || a * c <= w * h)
+    return (Math.max(a,b)<=Math.max(w,h) && Math.min(a,b)<=Math.min(w,h) || Math.max(b,c)<=Math.max(w,h) && Math.min(b,c)<=Math.min(w,h) || Math.max(a,c)<=Math.max(w,h) && Math.min(a,c)<=Math.min(w,h))
 }
-console.log(doesBrickFit(1, 2, 1, 1, 1))
+
+
+console.log(doesBrickFit(1,2,2,1,1))
