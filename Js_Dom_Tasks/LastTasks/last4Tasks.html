@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="lastTasks.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="last4Tasks.css" />
+    <title>Last 4 tasks</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="task1" id="task1">
+            <div class="move" id="move" onclick="setInterval(Task1,1000)"></div>
+            <button class="stop" id="stop" onclick="stopTask1()">Остановить</button>
+        </div>
+
+        <div class="task1" id="task2">
+            <div class="text" id="text" style="visibility: hidden;">Какой-то очень важный текст</div>
+            <a id="hide">Спрятать div</a>
+            <button class="hide" id="hide"
+                onclick="document.getElementById('hide').removeEventListener('click',Task2)">Остановить обработку
+                нажатия</button>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                document.getElementById('text').style.visibility = "visible";
+            });
+            let see = true;
+            let task2Text = document.getElementById("hide");
+            let Task2 = () => {
+                if (see) {
+                    document.getElementById('text').style.visibility = "hidden";
+                    task2Text.textContent = "Показать div"
+                    see = false;
+                }
+                else {
+                    document.getElementById('text').style.visibility = "visible";
+                    task2Text.textContent = "Спрятать div"
+                    see = true;
+                }
+            }
+            task2Text.addEventListener('click', Task2)
+        </script>
+        
+        <div class="task1" id="task3">
+            <span>Введите дату в формате гггг.мм.дд:</span>
+            <div>
+                <input type="text" id="inp">
+                <button id="okay" onclick="Task3(document.getElementById('inp').value)">Подтвердить</button>
+            </div>
+            <span id="task3Result">
+        </div>
+
+        <div class="task1" id="task4">
+            <span>Введите любой текст</span>
+            <div>
+                <input type="text" id="task4Text">
+                <button id="okay" onclick="Task4(document.getElementById('task4Text').value)">Подтвердить</button>
+            </div>
+            <ul id="list"></ul>
+        </div>
+    </div>
+</body>
+
+</html>

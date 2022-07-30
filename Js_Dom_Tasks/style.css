@@ -20,11 +20,12 @@ body{
 
 h1{
     font-family: "CurrentRegular";
-    font-size: 3vw
+    font-size: 3vw;
 }
 
 header{
     height: calc(1em + 5vw);
+    border-radius: 20px;
     line-height: calc(1em + 5vw);
     text-align: center;
     width:96%;
@@ -93,10 +94,6 @@ header{
 }
 
 .site-nav{
-    color:black;
-}
-
-.site-nav:visited{
     color:black;
 }
 

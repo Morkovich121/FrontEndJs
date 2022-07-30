@@ -3,10 +3,11 @@
 
 <head>
     <script>
-        alert("Имя пользователя: " + localStorage.getItem('userName'))
-        alert("Почта пользователя: " + localStorage.getItem('mail'))
-        alert("Возраст пользователя: " + localStorage.getItem('age'))
-
+        if (localStorage.getItem('userName')) {
+            alert("Имя пользователя: " + localStorage.getItem('userName'))
+            alert("Почта пользователя: " + localStorage.getItem('mail'))
+            alert("Возраст пользователя: " + localStorage.getItem('age'))
+        }
     </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

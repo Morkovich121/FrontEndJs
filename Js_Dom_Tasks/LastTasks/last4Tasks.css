@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    gap: 3rem;
+    flex-direction: column;
+}
+
+body {
+    background-color: lightgray;
+    margin:0;
+}
+
+.move{
+    width:5%;
+    height: 30%;
+    background-color: black;
+    position: relative;
+    left:0%;
+    cursor: pointer;
+}
+
+.task1{
+    background-color: antiquewhite;
+    height: 200px;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    display:flex;
+    flex-direction: column;
+    gap:2rem;
+}
+
+.stop{
+    width:6rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.text{
+    background-color: white;
+    width: fit-content;
+}
+
+a{
+    background-color: blue;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.hide{
+    width: 15rem;
+}

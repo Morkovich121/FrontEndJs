@@ -8,22 +8,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="style.css" />
   <title>Document</title>
+  <!--Task4-->
+  <script>
+    document.oncontextmenu = noMenu; function noMenu() { return false; }
+    function noSelection(element) {
+      var preventSelection = false;
+      function handle(element, event, handler) {
+        if (element.attachEvent) {
+          element.attachEvent('on' + event, handler);
+        }
+        else if (element.addEventListener) {
+          element.addEventListener(event, handler, false);
+        }
+      }
+      function removeSelection() {
+        if (window.getSelection) {
+          window.getSelection().removeAllRanges();
+        }
+        else if (document.selection && document.selection.clear)
+          document.selection.clear();
+      }
+
+      handle(element, 'mousemove', function () { if (preventSelection) removeSelection(); });
+      handle(element, 'mousedown', function (event) { var sender = event.target || event.srcElement; preventSelection = !sender.tagName.match(/INPUT|TEXTAREA/i); });
+    }
+    noSelection(document);
+  </script>
 </head>
 
 <body>
   <header>
     <div class='comp-name'>
-      <button name="task3" id="task3" style="width:250px; height:30px" onclick={Task3()}>задание 3</button>
+      <button name="task3" id="task3" style="width:80px; height:50px; display:flex; justify-content: center; align-items: 
+      center; position: absolute; left:8rem; top:1rem; background-color: transparent; border:none"
+        onclick={Task3()}><img src="images/sun.jpg" id="theme" style="width:4rem; height:4rem;"></img></button>
     </div>
     <img src="images/logo.jpg" class='logo'>
-    <a class='site-nav' href='#accordeon'>
+    <a class='site-nav' id="site-nav" href='#accordeon'>
       <div class='navigation'>Гармошка</div>
     </a>
-    <a class='site-nav' href='#form'>
-      <div class='navigation'>Форма</div>
+    <a class='site-nav' href='#scroll'>
+      <div class='navigation'>Скроллер</div>
     </a>
-    <a class='site-nav' href='#copyright'>
-      <div class='navigation'>Копирайт</div>
+    <a class='site-nav' href='#formScroll'>
+      <div class='navigation'>Форма</div>
     </a>
   </header>
   <div class="progress-bar blue stripes">
@@ -33,194 +61,200 @@
     </script>
   </div>
   <main>
-    <div class='all-main' style='height: 300%; padding-top:15vw;'>
-      <div class="slider-wrap">
-        <input type="radio" name="slider" class="slide-radio slide-radio1" checked id="slider_1">
-        <input type="radio" name="slider" class="slide-radio slide-radio2" id="slider_2">
-        <input type="radio" name="slider" class="slide-radio slide-radio3" id="slider_3">
-        <input type="radio" name="slider" class="slide-radio slide-radio4" id="slider_4">
-        <div class="next control">
-          <label for="slider_1" id="numb" class="numb numb1">&gt;</label>
-          <label for="slider_2" id="numb" class="numb numb2">&gt;</label>
-          <label for="slider_3" id="numb" class="numb numb3">&gt;</label>
-          <label for="slider_4" id="numb" class="numb numb4">&gt;</label>
-        </div>
-        <div class="previous control">
-          <label for="slider_1" id="numb" class="numb numb1">&lt;</label>
-          <label for="slider_2" id="numb" class="numb numb2">&lt;</label>
-          <label for="slider_3" id="numb" class="numb numb3">&lt;</label>
-          <label for="slider_4" id="numb" class="numb numb4">&lt;</label>
-        </div>
-        <div class="slider slide1">
-        </div>
-        <div class="slider slide2">
-        </div>
-        <div class="slider slide3">
-        </div>
-        <div class="slider slide4">
-        </div>
+    <div class='all-main' id="scroll" style='height: 300%; padding-top:15vw;'>
+      <div class=" slider-wrap">
+      <input type="radio" name="slider" class="slide-radio slide-radio1" checked id="slider_1">
+      <input type="radio" name="slider" class="slide-radio slide-radio2" id="slider_2">
+      <input type="radio" name="slider" class="slide-radio slide-radio3" id="slider_3">
+      <input type="radio" name="slider" class="slide-radio slide-radio4" id="slider_4">
+      <div class="next control">
+        <label for="slider_1" id="numb" class="numb numb1">&gt;</label>
+        <label for="slider_2" id="numb" class="numb numb2">&gt;</label>
+        <label for="slider_3" id="numb" class="numb numb3">&gt;</label>
+        <label for="slider_4" id="numb" class="numb numb4">&gt;</label>
       </div>
-      <hr class='block-line'>
-      <div class="wrapper">
-        <p id='accordeon'></p>
-        <div class="wrapper__first">
-          <div class="wrapper__name">CSS practice</div>
-        </div>
-        <div class="wrapper__first2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem sit quasi omnis
-          unde rerum commodi cum, ipsam, perferendis architecto ut quidem beatae, libero non asperiores inventore natus
-          accusantium consequuntur. Voluptatibus quasi animi labore, blanditiis eaque sint ut distinctio debitis! Enim
-          recusandae ducimus expedita obcaecati ipsam distinctio ipsum iste, culpa quidem!
-        </div>
-        <div class="wrapper__second">
-          <div class="wrapper__name" style="background-color: rgb(106, 106, 7)">CSS practice</div>
-        </div>
-        <div class="wrapper__second2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas suscipit illo
-          totam perspiciatis, alias error repellat praesentium accusamus consequuntur doloribus repudiandae nam, ullam
-          autem iste quo porro vitae vero sunt. Commodi, libero! Quaerat molestias nesciunt quia sed, a alias
-          perspiciatis magnam voluptatem fuga error aliquid deleniti amet quidem totam in?
-        </div>
-        <div class="wrapper__third">
-          <div class="wrapper__name" style="background-color: rgb(96, 154, 4)">CSS practice</div>
-        </div>
-        <div class="wrapper__third2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt, est corporis.
-          Eum possimus quas similique labore esse, corporis magni et impedit ut molestiae mollitia placeat sed ex
-          maiores ducimus exercitationem.
-        </div>
-        <div class="wrapper__fourth">
-          <div class="wrapper__name">CSS practice</div>
-        </div>
-        <div class="wrapper__fourth2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus in perspiciatis
-          adipisci perferendis, dicta officia accusantium dignissimos cupiditate aspernatur. Adipisci optio voluptate
-          asperiores, suscipit dolorem tempore laboriosam! Provident, exercitationem sit!
-        </div>
+      <div class="previous control">
+        <label for="slider_1" id="numb" class="numb numb1">&lt;</label>
+        <label for="slider_2" id="numb" class="numb numb2">&lt;</label>
+        <label for="slider_3" id="numb" class="numb numb3">&lt;</label>
+        <label for="slider_4" id="numb" class="numb numb4">&lt;</label>
       </div>
-      <ol style="float:left; font-size: 1.2vw; margin-left:20%;">
-        <li>
-          Какой-то очень осмысленный текст, который никого не оставит равнодушным
-        </li>
-        <li>
-          Какой-то очень осмысленный текст, который никого не оставит равнодушным
-        </li>
-        <li>
-          Какой-то очень осмысленный текст, который никого не оставит равнодушным
-        </li>
-        <li>
-          Какой-то очень осмысленный текст, который никого не оставит равнодушным
-        </li>
-
-      </ol>
-      <img src='images/picture4.jfif' style='height: calc(1em + 20vw); float:left; margin-left: 24%;'>
-      <hr class='block-line'>
-      <img src='images/sales.jpg' style='height: calc(1em + 35vw); float:left; margin-left: 2.05%;'>
-      <div class='text' style='font-size: calc(1.5vw);'>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ad doloremque fugit facere sapiente mollitia
-        molestias magni itaque cumque beatae veniam quia, dolores incidunt corrupti quasi, laudantium est vel eum.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ad doloremque fugit facere sapiente mollitia
-        molestias magni itaque cumque beatae veniam quia, dolores incidunt corrupti quasi, laudantium est vel eum.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ad doloremque fugit facere sapiente mollitia
-        molestias magni itaque cumque beatae veniam quia, dolores incidunt corrupti quasi, laudantium est vel eum.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ad doloremque fugit facere sapiente mollitia
-        molestias magni itaque cumque beatae veniam quia, dolores incidunt corrupti quasi, laudantium est vel eum.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ad doloremque fugit facere sapiente mollitia
-        molestias magni itaque cumque beatae veniam quia, dolores incidunt corrupti quasi, laudantium est vel eum.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ad doloremque fugit facere sapiente mollitia
-        molestias magni itaque cumque beatae veniam quia, dolores incidunt corrupti quasi, laudantium est vel eum.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ad doloremque fugit facere sapiente mollitia
-        molestias magni itaque cumque beatae veniam quia, dolores incidunt corrupti quasi, laudantium est vel eum.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ad doloremque fugit facere sapiente mollitia
-        molestias magni itaque cumque beatae veniam quia, dolores incidunt corrupti quasi, laudantium est vel eum.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ad doloremque fugit facere sapiente mollitia
-        molestias magni itaque cumque beatae veniam quia, dolores incidunt corrupti quasi, laudantium est vel eum.
+      <div class="slider slide1">
       </div>
-
-      <hr class='block-line'>
-      <div class='data-form'>
-        <p id='form'></p>
-
-
-        <form method="post" id="form" name="myForm" onsubmit={Task2()}>
-          <h1>Форма оплаты</h1>
-          <section>
-            <h2>Контактная информация</h2>
-            <fieldset>
-              <legend>Пол</legend>
-              <ul>
-                <li>
-                  <label for="title_1">
-                    <input type="radio" id="title_1" name="title" value="A">
-                    Мужской
-                  </label>
-                </li>
-                <li>
-                  <label for="title_2">
-                    <input type="radio" id="title_2" name="title" value="K">
-                    Женский
-                  </label>
-                </li>
-                <li>
-                  <label for="title_3">
-                    <input type="radio" id="title_3" name="title" value="Q">
-                    Еще не определился
-                  </label>
-                </li>
-              </ul>
-            </fieldset>
-            <p>
-              <label for="username">
-                <span>Имя: </span>
-              </label>
-              <input type="text" id="names" name="names" placeholder=" ">
-            </p>
-            <p>
-              <label for="mail">
-                <span>Почта: </span>
-              </label>
-              <input type="text" id="mail" name="usermail" placeholder=" ">
-            </p>
-            <p>
-              <label for="pwd">
-                <span>Ваш возраст: </span>
-              </label>
-              <input type="number" id="age" name="age" placeholder=" ">
-            </p>
-          </section>
-          <section>
-            <h2>Информация об оплате</h2>
-            <p>
-              <label for="card">
-                <span>Тип карты:</span>
-              </label>
-              <select id="card" name="usercard" required>
-                <option value="visa">Visa</option>
-                <option value="mc">Mastercard</option>
-                <option value="amex">American Express</option>
-              </select>
-            </p>
-            <p>
-              <label for="number">
-                <span>Номер карты:</span>
-              </label>
-              <input type="tel" id="number" name="cardnumber" placeholder=" ">
-            </p>
-          </section>
-          <section>
-            <p> <button type="submit" class='form-button'>Оплатить</button> <button type="submit" class='form-button'
-                style='margin-left:220px'>Отмена</button>
-            </p>
-          </section>
-        </form>
+      <div class="slider slide2">
       </div>
+      <div class="slider slide3">
+      </div>
+      <div class="slider slide4">
+      </div>
+    </div>
+    <p id='accordeon'></p>
+    <hr class='block-line'>
+    <div class="wrapper">
+      <div class="wrapper__first">
+        <div class="wrapper__name">CSS practice</div>
+      </div>
+      <div class="wrapper__first2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem sit quasi omnis
+        unde rerum commodi cum, ipsam, perferendis architecto ut quidem beatae, libero non asperiores inventore natus
+        accusantium consequuntur. Voluptatibus quasi animi labore, blanditiis eaque sint ut distinctio debitis! Enim
+        recusandae ducimus expedita obcaecati ipsam distinctio ipsum iste, culpa quidem!
+      </div>
+      <div class="wrapper__second">
+        <div class="wrapper__name" style="background-color: rgb(106, 106, 7)">CSS practice</div>
+      </div>
+      <div class="wrapper__second2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas suscipit illo
+        totam perspiciatis, alias error repellat praesentium accusamus consequuntur doloribus repudiandae nam, ullam
+        autem iste quo porro vitae vero sunt. Commodi, libero! Quaerat molestias nesciunt quia sed, a alias
+        perspiciatis magnam voluptatem fuga error aliquid deleniti amet quidem totam in?
+      </div>
+      <div class="wrapper__third">
+        <div class="wrapper__name" style="background-color: rgb(96, 154, 4)">CSS practice</div>
+      </div>
+      <div class="wrapper__third2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt, est corporis.
+        Eum possimus quas similique labore esse, corporis magni et impedit ut molestiae mollitia placeat sed ex
+        maiores ducimus exercitationem.
+      </div>
+      <div class="wrapper__fourth">
+        <div class="wrapper__name">CSS practice</div>
+      </div>
+      <div class="wrapper__fourth2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus in perspiciatis
+        adipisci perferendis, dicta officia accusantium dignissimos cupiditate aspernatur. Adipisci optio voluptate
+        asperiores, suscipit dolorem tempore laboriosam! Provident, exercitationem sit!
+      </div>
+    </div>
+    <ol style="float:left; font-size: 1.2vw; margin-left:20%;">
+      <li>
+        Какой-то очень осмысленный текст, который никого не оставит равнодушным
+      </li>
+      <li>
+        Какой-то очень осмысленный текст, который никого не оставит равнодушным
+      </li>
+      <li>
+        Какой-то очень осмысленный текст, который никого не оставит равнодушным
+      </li>
+      <li>
+        Какой-то очень осмысленный текст, который никого не оставит равнодушным
+      </li>
+
+    </ol>
+    <img src='images/picture4.jfif' style='height: calc(1em + 20vw); float:left; margin-left: 24%;'>
+    <hr class='block-line'>
+    <img src='images/sales.jpg' style='height: calc(1em + 35vw); float:left; margin-left: 2.05%;'>
+    <p id="formScroll"></p>
+    <div class='text' style='font-size: calc(1.5vw);'>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ad doloremque fugit facere sapiente mollitia
+      molestias magni itaque cumque beatae veniam quia, dolores incidunt corrupti quasi, laudantium est vel eum.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ad doloremque fugit facere sapiente mollitia
+      molestias magni itaque cumque beatae veniam quia, dolores incidunt corrupti quasi, laudantium est vel eum.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ad doloremque fugit facere sapiente mollitia
+      molestias magni itaque cumque beatae veniam quia, dolores incidunt corrupti quasi, laudantium est vel eum.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ad doloremque fugit facere sapiente mollitia
+      molestias magni itaque cumque beatae veniam quia, dolores incidunt corrupti quasi, laudantium est vel eum.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ad doloremque fugit facere sapiente mollitia
+      molestias magni itaque cumque beatae veniam quia, dolores incidunt corrupti quasi, laudantium est vel eum.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ad doloremque fugit facere sapiente mollitia
+      molestias magni itaque cumque beatae veniam quia, dolores incidunt corrupti quasi, laudantium est vel eum.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ad doloremque fugit facere sapiente mollitia
+      molestias magni itaque cumque beatae veniam quia, dolores incidunt corrupti quasi, laudantium est vel eum.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ad doloremque fugit facere sapiente mollitia
+      molestias magni itaque cumque beatae veniam quia, dolores incidunt corrupti quasi, laudantium est vel eum.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ad doloremque fugit facere sapiente mollitia
+      molestias magni itaque cumque beatae veniam quia, dolores incidunt corrupti quasi, laudantium est vel eum.
+    </div>
+    <hr class='block-line'>
+    <div class='data-form'>
+
+      <form method="post" id="form" name="myForm" onsubmit={Task2()}>
+        <h1>Форма оплаты</h1>
+        <section>
+          <h2>Контактная информация</h2>
+          <fieldset>
+            <legend>Пол</legend>
+            <ul>
+              <li>
+                <label for="title_1">
+                  <input type="radio" id="title_1" name="title" value="A">
+                  Мужской
+                </label>
+              </li>
+              <li>
+                <label for="title_2">
+                  <input type="radio" id="title_2" name="title" value="K">
+                  Женский
+                </label>
+              </li>
+              <li>
+                <label for="title_3">
+                  <input type="radio" id="title_3" name="title" value="Q">
+                  Еще не определился
+                </label>
+              </li>
+            </ul>
+          </fieldset>
+          <p>
+            <label for="username">
+              <span>Имя: </span>
+            </label>
+            <input type="text" id="names" name="names" placeholder=" ">
+          </p>
+          <p>
+            <label for="mail">
+              <span>Почта: </span>
+            </label>
+            <input type="text" id="mail" name="usermail" placeholder=" ">
+          </p>
+          <p>
+            <label for="pwd">
+              <span>Ваш возраст: </span>
+            </label>
+            <input type="number" id="age" name="age" placeholder=" ">
+          </p>
+        </section>
+        <section>
+          <h2>Информация об оплате</h2>
+          <p>
+            <label for="card">
+              <span>Тип карты:</span>
+            </label>
+            <select id="card" name="usercard" required>
+              <option value="visa">Visa</option>
+              <option value="mc">Mastercard</option>
+              <option value="amex">American Express</option>
+            </select>
+          </p>
+          <p>
+            <label for="number">
+              <span>Номер карты:</span>
+            </label>
+            <input type="tel" id="number" name="cardnumber" placeholder=" ">
+          </p>
+        </section>
+        <section>
+          <p> <button type="submit" class='form-button'>Оплатить</button> <button type="submit" class='form-button'
+              style='margin-left:220px'>Отмена</button>
+          </p>
+        </section>
+      </form>
+    </div>
     </div>
   </main>
   <p id='copyright'></p>
   <footer>
     <div class='footer'>
       <p>SITE BY ILYA SEREDA</p>
-      <p>©COPYRIGHT BLA BLA BLA 2017</p>
-      <p>TERMS & CONDITIONS | PRIVACY | LEGAL NOTICE</p>
+      <button style="width:fit-content" onclick={Task6()}>Получить информацию про браузер</button>
+      <div class="browser-info-container" style="display: flex; flex-direction: column; margin-right: 2rem;">
+        <div>
+          <span>Название браузера:</span>
+          <span id="browser-name"></span>
+        </div>
+        <div>
+          <span>Версия браузера:</span>
+          <span id="browser-version"></span>
+        </div>
+      </div>
     </div>
   </footer>
-
 </body>
 
 </html>
